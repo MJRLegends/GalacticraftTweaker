@@ -4,7 +4,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
-@Mod(modid = GalacticraftTweaker.MODID, version = GalacticraftTweaker.VERSION)
+@Mod(modid = GalacticraftTweaker.MODID, version = GalacticraftTweaker.VERSION, dependencies = "required-after:galacticraftcore; required-after:galacticraftplanets; required-after:crafttweaker@[3.0.25.,")
 public class GalacticraftTweaker
 {
     public static final String MODID = "galacticrafttweaker";
