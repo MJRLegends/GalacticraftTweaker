@@ -34,7 +34,6 @@ public class ActionAddCircuitFabricatorRecipe implements IAction {
 		inputs.add(CraftTweakerMC.getItemStack(this.input4));
 		inputs.add(CraftTweakerMC.getItemStack(this.input5));
 		CircuitFabricatorRecipes.addRecipe(CraftTweakerMC.getItemStack(this.output), inputs);
-
 	}
 
 	@Override

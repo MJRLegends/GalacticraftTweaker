@@ -1,5 +1,6 @@
 package com.mjr.galacticrafttweaker.crafttweaker;
 
+import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import crafttweaker.CraftTweakerAPI;
@@ -18,5 +19,16 @@ public class CraftTweakerCompatibility {
 	@ZenMethod
 	public static void removeCircuitFabricatorRecipe(IItemStack output) {
 		CraftTweakerAPI.apply(new ActionRemoveCircuitFabricatorRecipe(output));
+	}
+
+	@ZenMethod
+	public static void addCompressorShapelessRecipe(IItemStack output, @Optional IItemStack input1, @Optional IItemStack input2, @Optional IItemStack input3, @Optional IItemStack input4, @Optional IItemStack input5, @Optional IItemStack input6,
+			@Optional IItemStack input7, @Optional IItemStack input8, @Optional IItemStack input9) {
+		CraftTweakerAPI.apply(new ActionAddCompressorShapelessRecipe(input1, input2, input3, input4, input5, input6, input7, input8, input9, output));
+	}
+
+	@ZenMethod
+	public static void removeCompressorRecipe(IItemStack output) {
+		CraftTweakerAPI.apply(new ActionRemoveCompressorRecipe(output));
 	}
 }
