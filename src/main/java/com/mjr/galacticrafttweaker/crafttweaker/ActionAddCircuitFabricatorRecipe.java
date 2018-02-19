@@ -1,7 +1,6 @@
 package com.mjr.galacticrafttweaker.crafttweaker;
 
 import micdoodle8.mods.galacticraft.api.recipe.CircuitFabricatorRecipes;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import crafttweaker.IAction;
 import crafttweaker.api.item.IItemStack;
@@ -27,7 +26,7 @@ public class ActionAddCircuitFabricatorRecipe implements IAction {
 
 	@Override
 	public void apply() {
-		NonNullList<ItemStack> inputs = NonNullList.create();
+		NonNullList<Object> inputs = NonNullList.create();
 		inputs.add(CraftTweakerMC.getItemStack(this.input1));
 		inputs.add(CraftTweakerMC.getItemStack(this.input2));
 		inputs.add(CraftTweakerMC.getItemStack(this.input3));

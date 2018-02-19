@@ -31,7 +31,7 @@ public class CraftTweakerCompatibility {
 	public static void removeCompressorRecipe(IItemStack output) {
 		CraftTweakerAPI.apply(new ActionRemoveCompressorRecipe(output));
 	}
-	
+
 	@ZenMethod
 	public static void modifySpaceStationRecipe(int spaceStationID, IItemStack input1, @Optional IItemStack input2, @Optional IItemStack input3, @Optional IItemStack input4, @Optional IItemStack input5) {
 		CraftTweakerAPI.apply(new ActionModifySpaceStationRecipe(spaceStationID, input1, input2, input3, input4, input5));
