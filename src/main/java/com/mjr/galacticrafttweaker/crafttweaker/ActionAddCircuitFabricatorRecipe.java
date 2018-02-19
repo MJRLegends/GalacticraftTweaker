@@ -1,13 +1,12 @@
 package com.mjr.galacticrafttweaker.crafttweaker;
 
 import micdoodle8.mods.galacticraft.api.recipe.CircuitFabricatorRecipes;
-import net.minecraft.item.ItemStack;
+import minetweaker.IUndoableAction;
+import minetweaker.api.item.IItemStack;
+import minetweaker.api.minecraft.MineTweakerMC;
 import net.minecraft.util.NonNullList;
-import crafttweaker.IAction;
-import crafttweaker.api.item.IItemStack;
-import crafttweaker.api.minecraft.CraftTweakerMC;
 
-public class ActionAddCircuitFabricatorRecipe implements IAction {
+public class ActionAddCircuitFabricatorRecipe implements IUndoableAction {
 
 	private final IItemStack input1;
 	private final IItemStack input2;
@@ -27,13 +26,13 @@ public class ActionAddCircuitFabricatorRecipe implements IAction {
 
 	@Override
 	public void apply() {
-		NonNullList<ItemStack> inputs = NonNullList.create();
-		inputs.add(CraftTweakerMC.getItemStack(this.input1));
-		inputs.add(CraftTweakerMC.getItemStack(this.input2));
-		inputs.add(CraftTweakerMC.getItemStack(this.input3));
-		inputs.add(CraftTweakerMC.getItemStack(this.input4));
-		inputs.add(CraftTweakerMC.getItemStack(this.input5));
-		CircuitFabricatorRecipes.addRecipe(CraftTweakerMC.getItemStack(this.output), inputs);
+		NonNullList<Object> inputs = NonNullList.create();
+		inputs.add(MineTweakerMC.getItemStack(this.input1));
+		inputs.add(MineTweakerMC.getItemStack(this.input2));
+		inputs.add(MineTweakerMC.getItemStack(this.input3));
+		inputs.add(MineTweakerMC.getItemStack(this.input4));
+		inputs.add(MineTweakerMC.getItemStack(this.input5));
+		CircuitFabricatorRecipes.addRecipe(MineTweakerMC.getItemStack(this.output), inputs);
 	}
 
 	@Override
@@ -41,4 +40,23 @@ public class ActionAddCircuitFabricatorRecipe implements IAction {
 		return "Adding CircuitFabricator Recipe: Input 1 " + this.input1 + " Input 2 " + this.input2 + " Input 3 " + this.input3 + " Input 4 " + this.input4 + " Input 5 " + this.input5 + " to Output " + this.output;
 	}
 
+	@Override
+	public boolean canUndo() {
+		return true;
+	}
+
+	@Override
+	public String describeUndo() {
+		return "Removing CircuitFabricator Recipe: with Output " + this.output;
+	}
+
+	@Override
+	public Object getOverrideKey() {
+		return null;
+	}
+
+	@Override
+	public void undo() {
+		CircuitFabricatorRecipes.removeRecipe(MineTweakerMC.getItemStack(this.output));
+	}
 }

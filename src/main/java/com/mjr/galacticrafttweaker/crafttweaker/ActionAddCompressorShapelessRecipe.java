@@ -1,13 +1,13 @@
 package com.mjr.galacticrafttweaker.crafttweaker;
 
 import micdoodle8.mods.galacticraft.api.recipe.CompressorRecipes;
+import minetweaker.IUndoableAction;
+import minetweaker.api.item.IItemStack;
+import minetweaker.api.minecraft.MineTweakerMC;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import crafttweaker.IAction;
-import crafttweaker.api.item.IItemStack;
-import crafttweaker.api.minecraft.CraftTweakerMC;
 
-public class ActionAddCompressorShapelessRecipe implements IAction {
+public class ActionAddCompressorShapelessRecipe implements IUndoableAction {
 
 	private final IItemStack input1;
 	private final IItemStack input2;
@@ -37,30 +37,50 @@ public class ActionAddCompressorShapelessRecipe implements IAction {
 	public void apply() {
 		NonNullList<ItemStack> inputs = NonNullList.create();
 		if (this.input1 != null)
-			inputs.add(CraftTweakerMC.getItemStack(this.input1));
+			inputs.add(MineTweakerMC.getItemStack(this.input1));
 		if (this.input2 != null)
-			inputs.add(CraftTweakerMC.getItemStack(this.input2));
+			inputs.add(MineTweakerMC.getItemStack(this.input2));
 		if (this.input3 != null)
-			inputs.add(CraftTweakerMC.getItemStack(this.input3));
+			inputs.add(MineTweakerMC.getItemStack(this.input3));
 		if (this.input4 != null)
-			inputs.add(CraftTweakerMC.getItemStack(this.input4));
+			inputs.add(MineTweakerMC.getItemStack(this.input4));
 		if (this.input5 != null)
-			inputs.add(CraftTweakerMC.getItemStack(this.input5));
+			inputs.add(MineTweakerMC.getItemStack(this.input5));
 		if (this.input6 != null)
-			inputs.add(CraftTweakerMC.getItemStack(this.input6));
+			inputs.add(MineTweakerMC.getItemStack(this.input6));
 		if (this.input7 != null)
-			inputs.add(CraftTweakerMC.getItemStack(this.input7));
+			inputs.add(MineTweakerMC.getItemStack(this.input7));
 		if (this.input8 != null)
-			inputs.add(CraftTweakerMC.getItemStack(this.input8));
+			inputs.add(MineTweakerMC.getItemStack(this.input8));
 		if (this.input9 != null)
-			inputs.add(CraftTweakerMC.getItemStack(this.input9));
-		CompressorRecipes.addShapelessRecipe(CraftTweakerMC.getItemStack(this.output), inputs.toArray());
+			inputs.add(MineTweakerMC.getItemStack(this.input9));
+		CompressorRecipes.addShapelessRecipe(MineTweakerMC.getItemStack(this.output), inputs.toArray());
 	}
 
 	@Override
 	public String describe() {
 		return "Adding Compressor Recipe: Input 1 " + this.input1 + " Input 2 " + this.input2 + " Input 3 " + this.input3 + " Input 4 " + this.input4 + " Input 5 " + this.input5 + " Input 6 " + this.input6 + " Input 7 " + this.input7 + " Input 8 "
 				+ this.input8 + " Input 9 " + this.input9 + " to Output " + this.output;
+	}
+
+	@Override
+	public boolean canUndo() {
+		return true;
+	}
+
+	@Override
+	public String describeUndo() {
+		return "Removing Compressor Recipe: for Output " + this.output;
+	}
+
+	@Override
+	public Object getOverrideKey() {
+		return null;
+	}
+
+	@Override
+	public void undo() {
+		CompressorRecipes.removeRecipe(MineTweakerMC.getItemStack(this.output));
 	}
 
 }
