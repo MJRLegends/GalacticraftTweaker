@@ -8,8 +8,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mjr.extraplanets.Constants;
-
 @Mod(modid = GalacticraftTweaker.MODID, version = GalacticraftTweaker.VERSION, dependencies = "required-after:galacticraftcore@[4.0.1.138,); required-after:galacticraftplanets@[4.0.1.138,); required-after:crafttweaker@[3.0.25.,); after:extraplanets;", certificateFingerprint = "b02331787272ec3515ebe63ecdeea0d746653468")
 public class GalacticraftTweaker {
 	public static final String MODID = "galacticrafttweaker";
@@ -22,6 +20,6 @@ public class GalacticraftTweaker {
 
 	@EventHandler
 	public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
-		logger.error(Constants.modID + " Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported!");
+		logger.error(MODID + " Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported!");
 	}
 }
