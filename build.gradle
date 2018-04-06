@@ -1,6 +1,6 @@
-def minecraft_version="1.12.2"
-def jei_version="4.8.5.144"
-def version_minetweaker="4.0.8.277"
+def minecraft_version="1.11.2"
+def jei_version="4.5.0.294"
+def version_minetweaker="3.0.26.113"
 
 buildscript {
     repositories {
@@ -8,7 +8,7 @@ buildscript {
         maven { url = "http://files.minecraftforge.net/maven" }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
     }
 }
 
@@ -27,7 +27,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "1.0"
+version = "1.11.2-1.0.0"
 group = "com.mjr.galacticrafttweaker" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "GalacticraftTweaker"
 
@@ -37,23 +37,22 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.1.2566"
+    version = "1.11.2-13.20.1.2513"
     runDir = "run"
-    mappings = "snapshot_20171003"
+    mappings = "snapshot_20161220"
     makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
 dependencies {
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${version_minetweaker}"
-    compile "mezz.jei:jei_${minecraft_version}:${jei_version}:api"
+    deobfCompile "MineTweaker3:MineTweaker3-MC1112-Main:${minecraft_version}-${version_minetweaker}"
+    deobfCompile "mezz.jei:jei_${minecraft_version}:${jei_version}"
+	deobfCompile "com.blamejared:MTLib:2.0.2.3"
 	compile files (
-		"Galacticraft-API-1.12.2-dev.jar",
-		"GalacticraftCore-Dev-1.12.2-4.0.1.0.jar",
-		"Galacticraft-Planets-Dev-1.12.2-4.0.1.0.jar",
-		"MicdoodleCore-Dev-1.12.2-4.0.1.0.jar"
+		"Galacticraft-API-1.11.2-4.0.1.120.jar",
+		"GalacticraftCore-Dev-1.11.2-4.0.1.120.jar",
+		"Galacticraft-Planets-Dev-1.11.2-4.0.1.120.jar",
+		"MicdoodleCore-Dev-1.11.2-4.0.1.120.jar"
 	)
-	runtime "mezz.jei:jei_${minecraft_version}:${jei_version}"
-
 }
 
 processResources {

@@ -1,10 +1,15 @@
 package com.mjr.galacticrafttweaker.crafttweaker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import micdoodle8.mods.galacticraft.api.recipe.CircuitFabricatorRecipes;
+import micdoodle8.mods.galacticraft.core.client.jei.RecipeCategories;
+import micdoodle8.mods.galacticraft.core.client.jei.circuitfabricator.CircuitFabricatorRecipeWrapper;
 import minetweaker.IUndoableAction;
+import minetweaker.MineTweakerAPI;
 import minetweaker.api.item.IItemStack;
 import minetweaker.api.minecraft.MineTweakerMC;
-import net.minecraft.util.NonNullList;
 
 public class ActionAddCircuitFabricatorRecipe implements IUndoableAction {
 
@@ -26,13 +31,15 @@ public class ActionAddCircuitFabricatorRecipe implements IUndoableAction {
 
 	@Override
 	public void apply() {
-		NonNullList<Object> inputs = NonNullList.create();
+		List<Object> inputs = new ArrayList<Object>();
 		inputs.add(MineTweakerMC.getItemStack(this.input1));
 		inputs.add(MineTweakerMC.getItemStack(this.input2));
 		inputs.add(MineTweakerMC.getItemStack(this.input3));
 		inputs.add(MineTweakerMC.getItemStack(this.input4));
 		inputs.add(MineTweakerMC.getItemStack(this.input5));
 		CircuitFabricatorRecipes.addRecipe(MineTweakerMC.getItemStack(this.output), inputs);
+		CircuitFabricatorRecipeWrapper wrapper = new CircuitFabricatorRecipeWrapper(inputs, MineTweakerMC.getItemStack(this.output));
+		MineTweakerAPI.getIjeiRecipeRegistry().addRecipe(wrapper, RecipeCategories.CIRCUIT_FABRICATOR_ID);
 	}
 
 	@Override
@@ -42,12 +49,12 @@ public class ActionAddCircuitFabricatorRecipe implements IUndoableAction {
 
 	@Override
 	public boolean canUndo() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public String describeUndo() {
-		return "Removing CircuitFabricator Recipe: with Output " + this.output;
+		return null;
 	}
 
 	@Override
@@ -57,6 +64,6 @@ public class ActionAddCircuitFabricatorRecipe implements IUndoableAction {
 
 	@Override
 	public void undo() {
-		CircuitFabricatorRecipes.removeRecipe(MineTweakerMC.getItemStack(this.output));
+		
 	}
 }

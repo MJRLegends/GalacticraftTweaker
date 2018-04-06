@@ -65,12 +65,12 @@ public class ActionAddCompressorShapelessRecipe implements IUndoableAction {
 
 	@Override
 	public boolean canUndo() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public String describeUndo() {
-		return "Removing Compressor Recipe: for Output " + this.output;
+		return null;
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class ActionAddCompressorShapelessRecipe implements IUndoableAction {
 
 	@Override
 	public void undo() {
-		CompressorRecipes.removeRecipe(MineTweakerMC.getItemStack(this.output));
+		
 	}
 
 }
