@@ -1,10 +1,10 @@
 package com.mjr.galacticrafttweaker.crafttweaker;
 
-import micdoodle8.mods.galacticraft.api.recipe.CircuitFabricatorRecipes;
-import net.minecraft.util.NonNullList;
 import crafttweaker.IAction;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import micdoodle8.mods.galacticraft.api.recipe.CircuitFabricatorRecipes;
+import net.minecraft.util.NonNullList;
 
 public class ActionAddCircuitFabricatorRecipe implements IAction {
 

@@ -2,10 +2,10 @@ package com.mjr.galacticrafttweaker.crafttweaker;
 
 import java.util.HashMap;
 
-import micdoodle8.mods.galacticraft.api.GalacticraftRegistry;
 import crafttweaker.IAction;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import micdoodle8.mods.galacticraft.api.GalacticraftRegistry;
 
 public class ActionModifySpaceStationRecipe implements IAction {
 

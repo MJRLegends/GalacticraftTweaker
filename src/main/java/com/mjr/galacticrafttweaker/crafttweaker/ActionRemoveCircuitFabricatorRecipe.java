@@ -1,9 +1,9 @@
 package com.mjr.galacticrafttweaker.crafttweaker;
 
-import micdoodle8.mods.galacticraft.api.recipe.CircuitFabricatorRecipes;
 import crafttweaker.IAction;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import micdoodle8.mods.galacticraft.api.recipe.CircuitFabricatorRecipes;
 
 public class ActionRemoveCircuitFabricatorRecipe implements IAction {
 
