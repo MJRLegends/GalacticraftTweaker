@@ -31,6 +31,26 @@ public class CraftTweakerCompatibility {
 	public static void removeCompressorRecipe(IItemStack output) {
 		CraftTweakerAPI.apply(new ActionRemoveCompressorRecipe(output));
 	}
+	
+	@ZenMethod
+	public static void removeNASATier1RocketRecipe() {
+		CraftTweakerAPI.apply(new ActionRemoveTieredRocketRecipe(1));
+	}
+	
+	@ZenMethod
+	public static void removeNASATier2RocketRecipe() {
+		CraftTweakerAPI.apply(new ActionRemoveTieredRocketRecipe(2));
+	}
+	
+	@ZenMethod
+	public static void removeNASATier3RocketRecipe() {
+		CraftTweakerAPI.apply(new ActionRemoveTieredRocketRecipe(3));
+	}
+	
+	@ZenMethod
+	public static void addNASATieredRocketRecipe(int tier, IItemStack[] inputs) {
+		CraftTweakerAPI.apply(new ActionAddNASATieredRocketRecipe(tier, inputs));
+	}
 
 	@ZenMethod
 	public static void modifySpaceStationRecipe(int spaceStationID, IItemStack input1, @Optional IItemStack input2, @Optional IItemStack input3, @Optional IItemStack input4, @Optional IItemStack input5) {
