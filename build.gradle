@@ -9,6 +9,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.1.0"
     }
 }
 
@@ -24,10 +25,9 @@ repositories {
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
-//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+apply plugin: 'com.matthewprenger.cursegradle'
 
-
-version = "1.12.2-1.0.2"
+version = "1.12.2-1.0.3"
 group = "com.mjr.galacticrafttweaker" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "GalacticraftTweaker"
 
@@ -57,19 +57,14 @@ dependencies {
 }
 
 processResources {
-    // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
+        include 'mcmod.info'      
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
         
-    // copy everything else except the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
@@ -87,4 +82,17 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
     outputFile = jar.archivePath
 }
 
+curseforge {
+	apiKey = project.findProperty("curseforge_key")
+	project {
+		id = "286116"
+		releaseType = "release"
+		addGameVersion "${minecraft_version}"
+		mainArtifact(jar) {
+		}
+	}
+}
+
 build.dependsOn signJar
+tasks.build.dependsOn signJar
+tasks.curseforge.dependsOn build
