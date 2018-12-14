@@ -51,6 +51,11 @@ public class CraftTweakerCompatibility {
 	public static void addNASATieredRocketRecipe(int tier, IItemStack[] inputs) {
 		CraftTweakerAPI.apply(new ActionAddNASATieredRocketRecipe(tier, inputs));
 	}
+	
+	@ZenMethod
+	public static void addDungeonLoot(int tier, IItemStack input) {
+		CraftTweakerAPI.apply(new ActionAddDungeonLoot(tier, input));
+	}
 
 	@ZenMethod
 	public static void modifySpaceStationRecipe(int spaceStationID, IItemStack input1, @Optional IItemStack input2, @Optional IItemStack input3, @Optional IItemStack input4, @Optional IItemStack input5) {
