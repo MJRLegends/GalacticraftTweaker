@@ -14,13 +14,13 @@ public class ActionRemoveTieredRocketRecipe implements IAction {
 	public void apply() {
 		switch(tier){
 		case 1:
-			GalacticraftRegistry.getRocketT1Recipes().removeAll(GalacticraftRegistry.getRocketT1Recipes());
+			GalacticraftRegistry.removeAllT1RocketRecipes();
 			break;
 		case 2:
-			GalacticraftRegistry.getRocketT2Recipes().removeAll(GalacticraftRegistry.getRocketT2Recipes());
+			GalacticraftRegistry.removeAllT2RocketRecipes();
 			break;
 		case 3:
-			GalacticraftRegistry.getRocketT3Recipes().removeAll(GalacticraftRegistry.getRocketT3Recipes());
+			GalacticraftRegistry.removeAllT3RocketRecipes();
 			break;
 		}
 	}
