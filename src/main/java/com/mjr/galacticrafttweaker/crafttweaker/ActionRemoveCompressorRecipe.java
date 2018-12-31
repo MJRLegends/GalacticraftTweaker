@@ -5,7 +5,7 @@ import minetweaker.IUndoableAction;
 import minetweaker.api.item.IItemStack;
 import minetweaker.api.minecraft.MineTweakerMC;
 
-public class ActionRemoveCompressorRecipe implements IUndoableAction {
+public class ActionRemoveCompressorRecipe implements IUndoableAction  {
 
 	private final IItemStack output;
 
@@ -22,6 +22,7 @@ public class ActionRemoveCompressorRecipe implements IUndoableAction {
 	public String describe() {
 		return "Removing Compressor Recipe: for Output " + this.output;
 	}
+
 
 	@Override
 	public boolean canUndo() {
@@ -40,7 +41,6 @@ public class ActionRemoveCompressorRecipe implements IUndoableAction {
 
 	@Override
 	public void undo() {
-
+		
 	}
-
 }

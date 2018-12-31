@@ -7,7 +7,7 @@ import minetweaker.api.minecraft.MineTweakerMC;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
-public class ActionAddCompressorShapelessRecipe implements IUndoableAction {
+public class ActionAddCompressorShapelessRecipe implements IUndoableAction  {
 
 	private final IItemStack input1;
 	private final IItemStack input2;
@@ -63,6 +63,7 @@ public class ActionAddCompressorShapelessRecipe implements IUndoableAction {
 				+ this.input8 + " Input 9 " + this.input9 + " to Output " + this.output;
 	}
 
+
 	@Override
 	public boolean canUndo() {
 		return false;
@@ -82,5 +83,4 @@ public class ActionAddCompressorShapelessRecipe implements IUndoableAction {
 	public void undo() {
 		
 	}
-
 }

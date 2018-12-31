@@ -5,9 +5,7 @@ import minetweaker.api.item.IItemStack;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
-import crafttweaker.annotations.ZenRegister;
 
-@ZenRegister
 @ZenClass("mods.GalacticraftTweaker")
 public class CraftTweakerCompatibility {
 
@@ -34,5 +32,35 @@ public class CraftTweakerCompatibility {
 	@ZenMethod
 	public static void removeCompressorRecipe(IItemStack output) {
 		MineTweakerAPI.apply(new ActionRemoveCompressorRecipe(output));
+	}
+
+	@ZenMethod
+	public static void removeNASATier1RocketRecipe() {
+		MineTweakerAPI.apply(new ActionRemoveTieredRocketRecipe(1));
+	}
+
+	@ZenMethod
+	public static void removeNASATier2RocketRecipe() {
+		MineTweakerAPI.apply(new ActionRemoveTieredRocketRecipe(2));
+	}
+
+	@ZenMethod
+	public static void removeNASATier3RocketRecipe() {
+		MineTweakerAPI.apply(new ActionRemoveTieredRocketRecipe(3));
+	}
+
+	@ZenMethod
+	public static void addNASATieredRocketRecipe(int tier, IItemStack[] inputs) {
+		MineTweakerAPI.apply(new ActionAddNASATieredRocketRecipe(tier, inputs));
+	}
+
+	@ZenMethod
+	public static void addDungeonLoot(int tier, IItemStack input) {
+		MineTweakerAPI.apply(new ActionAddDungeonLoot(tier, input));
+	}
+
+	@ZenMethod
+	public static void modifySpaceStationRecipe(int spaceStationID, IItemStack input1, @Optional IItemStack input2, @Optional IItemStack input3, @Optional IItemStack input4, @Optional IItemStack input5) {
+		MineTweakerAPI.apply(new ActionModifySpaceStationRecipe(spaceStationID, input1, input2, input3, input4, input5));
 	}
 }

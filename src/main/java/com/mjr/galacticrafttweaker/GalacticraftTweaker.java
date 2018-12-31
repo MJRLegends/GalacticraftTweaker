@@ -1,10 +1,10 @@
 package com.mjr.galacticrafttweaker;
 
+import com.mjr.galacticrafttweaker.crafttweaker.CraftTweakerCompatibility;
+
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-
-import com.mjr.galacticrafttweaker.crafttweaker.CraftTweakerCompatibility;
 
 @Mod(modid = GalacticraftTweaker.MODID, version = GalacticraftTweaker.VERSION, dependencies = "required-after:galacticraftcore; required-after:galacticraftplanets; required-after:crafttweaker; required-after:mtlib")
 public class GalacticraftTweaker {

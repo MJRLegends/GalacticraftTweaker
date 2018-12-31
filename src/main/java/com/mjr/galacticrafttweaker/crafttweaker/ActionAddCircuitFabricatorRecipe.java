@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import micdoodle8.mods.galacticraft.api.recipe.CircuitFabricatorRecipes;
-import micdoodle8.mods.galacticraft.core.client.jei.RecipeCategories;
-import micdoodle8.mods.galacticraft.core.client.jei.circuitfabricator.CircuitFabricatorRecipeWrapper;
 import minetweaker.IUndoableAction;
-import minetweaker.MineTweakerAPI;
 import minetweaker.api.item.IItemStack;
 import minetweaker.api.minecraft.MineTweakerMC;
 
-public class ActionAddCircuitFabricatorRecipe implements IUndoableAction {
+public class ActionAddCircuitFabricatorRecipe implements IUndoableAction  {
 
 	private final IItemStack input1;
 	private final IItemStack input2;
@@ -38,14 +35,13 @@ public class ActionAddCircuitFabricatorRecipe implements IUndoableAction {
 		inputs.add(MineTweakerMC.getItemStack(this.input4));
 		inputs.add(MineTweakerMC.getItemStack(this.input5));
 		CircuitFabricatorRecipes.addRecipe(MineTweakerMC.getItemStack(this.output), inputs);
-		CircuitFabricatorRecipeWrapper wrapper = new CircuitFabricatorRecipeWrapper(inputs, MineTweakerMC.getItemStack(this.output));
-		MineTweakerAPI.getIjeiRecipeRegistry().addRecipe(wrapper, RecipeCategories.CIRCUIT_FABRICATOR_ID);
 	}
 
 	@Override
 	public String describe() {
 		return "Adding CircuitFabricator Recipe: Input 1 " + this.input1 + " Input 2 " + this.input2 + " Input 3 " + this.input3 + " Input 4 " + this.input4 + " Input 5 " + this.input5 + " to Output " + this.output;
 	}
+
 
 	@Override
 	public boolean canUndo() {
