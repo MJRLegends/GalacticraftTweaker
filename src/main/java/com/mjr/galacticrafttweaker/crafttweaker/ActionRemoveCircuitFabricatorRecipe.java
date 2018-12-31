@@ -26,25 +26,21 @@ public class ActionRemoveCircuitFabricatorRecipe implements IUndoableAction {
 
 	@Override
 	public boolean canUndo() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public String describeUndo() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Object getOverrideKey() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void undo() {
-		// TODO Auto-generated method stub
 		
 	}
 }
