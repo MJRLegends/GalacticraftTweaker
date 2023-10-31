@@ -89,12 +89,14 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
 }
 
 curseforge {
-	apiKey = project.findProperty("curseforge_key")
-	project {
-		id = "286116"
-		releaseType = "release"
-		addGameVersion "${minecraft_version}"
-		mainArtifact(jar) {
+    if (project.hasProperty('curseforge_key')){
+		apiKey = project.findProperty("curseforge_key")
+		project {
+			id = "286116"
+			releaseType = "release"
+			addGameVersion "${minecraft_version}"
+			mainArtifact(jar) {
+			}
 		}
 	}
 }
